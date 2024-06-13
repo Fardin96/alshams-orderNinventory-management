@@ -22,6 +22,7 @@ mongoose.connect(uri);
 
 // console.log('+-------------SERVER------------------+');
 // console.log('MONGODB_URI ', uri);
+// console.log('MONGODB_URI data type: ', typeof uri);
 // console.log('PORT', port);
 // console.log('+-------------------------------------+');
 
