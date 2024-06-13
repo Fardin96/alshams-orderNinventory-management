@@ -1,0 +1,9 @@
+{
+  "name": "alshams-orderNinventory-management",
+  "version": "1.0.0",
+  "description": "order and inventory management solution for Al-Shams Abayat BD",
+  "main": "app.js",
+  "repository": "git@github.com:Fardin96/alshams-orderNinventory-management.git",
+  "author": "Fardin96 <fardinshuvro96@gmail.com>",
+  "license": "MIT"
+}
