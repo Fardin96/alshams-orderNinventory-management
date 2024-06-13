@@ -7,7 +7,7 @@ require('dotenv').config();
 
 // imports-routes
 // const userRoute = require('./routes/user');
-// const authenticaitonRoute = require('./routes/authentication');
+const authenticaitonRoutes = require('./routes/auth/auth-routes');
 
 // configs
 const app = express();
@@ -22,7 +22,6 @@ mongoose.connect(uri);
 
 // console.log('+-------------SERVER------------------+');
 // console.log('MONGODB_URI ', uri);
-// console.log('MONGODB_URI data type: ', typeof uri);
 // console.log('PORT', port);
 // console.log('+-------------------------------------+');
 
@@ -40,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 // app.use('/newUser', userRoute);
-// app.use('/auth', authenticaitonRoute);
+app.use('/auth', authenticaitonRoutes);
 
 // default error codes!
 app.use((req, res, next) => {

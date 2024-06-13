@@ -1,9 +1,43 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
-const { jwt_token } = require('../../utils/auth-utils');
-
+const { passwordHash, jwt_token } = require('../../utils/auth-utils');
 const User = require('../../models/user.model');
+
+//* registration route
+router.route('/register').post(async (req, res) => {
+  const email = req.body.email;
+  const password = await passwordHash(req.body.password);
+
+  // console.log('this req is hitting: ', name, password);
+
+  try {
+    const emailExists = await User.findOne({ email });
+
+    // check duplicate user
+    if (!emailExists) {
+      const newUser = new User({
+        email,
+        password,
+      });
+
+      // console.log('sending to server: ', newUser);
+
+      const token = jwt_token(newUser._id);
+
+      await newUser
+        .save()
+        .then(() => res.json({ token: token }))
+        .catch((error) =>
+          res.status(401).json('error adding new user: ', error.message)
+        );
+    } else {
+      res.status(401).json('duplicate user!');
+    }
+  } catch (error) {
+    console.log('error registering user!', error);
+  }
+});
 
 //* login route
 router.route('/login').post(async (req, res) => {
