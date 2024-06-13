@@ -1,18 +1,18 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 
-const { jwt_token } = require('../functions/sercurityFunctions');
+const { jwt_token } = require('../../utils/auth-utils');
 
-const User = require('../models/user.model');
+const User = require('../../models/user.model');
 
 //* login route
 router.route('/login').post(async (req, res) => {
   try {
-    const { name, password } = req.body;
+    const { email, password } = req.body;
 
     // console.log('getting the request: ', name, password);
 
-    const userExists = await User.findOne({ name: name });
+    const userExists = await User.findOne({ email: email });
 
     // console.log('does the user exist?', userExists);
 
