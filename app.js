@@ -7,7 +7,7 @@ require('dotenv').config();
 
 // imports-routes
 // const userRoute = require('./routes/user');
-const authenticaitonRoutes = require('./routes/auth/auth-routes');
+const authRoutes = require('./routes/auth/auth-routes');
 
 // configs
 const app = express();
@@ -16,7 +16,7 @@ const connection = mongoose.connection;
 
 // mongodb connection
 const uri = process.env.MONGODB_URI;
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3000;
 
 mongoose.connect(uri);
 
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 // app.use('/newUser', userRoute);
-app.use('/auth', authenticaitonRoutes);
+app.use('/auth', authRoutes);
 
 // default error codes!
 app.use((req, res, next) => {
@@ -51,7 +51,7 @@ app.use((req, res, next) => {
 // error handler
 app.use((err, req, res, next) => {
   res.locals.error = err;
-  const status = err.status || 500;
+  const status = err.status || 5000;
   res.status(status);
 
   // Send a specific response based on error status

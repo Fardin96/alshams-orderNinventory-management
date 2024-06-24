@@ -47,7 +47,6 @@ router.route('/login').post(async (req, res) => {
     // console.log('getting the request: ', name, password);
 
     const userExists = await User.findOne({ email: email });
-
     // console.log('does the user exist?', userExists);
 
     if (!userExists) {
