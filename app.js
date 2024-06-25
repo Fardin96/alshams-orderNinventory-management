@@ -12,7 +12,7 @@ const authRoutes = require('./routes/auth/auth-routes');
 
 // configs
 const app = express();
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.json());
 const connection = mongoose.connection;
 
