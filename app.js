@@ -12,10 +12,6 @@ const authRoutes = require('./routes/auth/auth-routes');
 
 // configs
 const app = express();
-// "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-// "headers": {
-//   "Access-Control-Allow-Origin": "*"
-// }
 app.use(cors());
 app.use(express.json());
 const connection = mongoose.connection;
