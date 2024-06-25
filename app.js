@@ -1,5 +1,6 @@
 // imports-modules
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 // imports-others
@@ -11,6 +12,7 @@ const authRoutes = require('./routes/auth/auth-routes');
 
 // configs
 const app = express();
+app.use(cors());
 app.use(express.json());
 const connection = mongoose.connection;
 
